@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 初级运维工程师</title>
+    <style>
+        :root {
+            --primary: #1a3c5e;
+            --primary-light: #2c5f8a;
+            --accent: #2980b9;
+            --accent-light: #e8f4fd;
+            --text-dark: #2c3e50;
+            --text-medium: #4a5568;
+            --text-light: #5a6c7d;
+            --border: #e2e8f0;
+            --bg-light: #f8fafb;
+            --bg-tag: #eef5fb;
+            --tag-text: #1a5276;
+            --tag-border: #c8ddf0;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --radius: 8px;
+            --radius-sm: 5px;
+            --transition: 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #eef1f5;
+            color: var(--text-dark);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            justify-content: center;
+            padding: 24px 16px 60px;
+            min-height: 100vh;
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 820px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md), 0 20px 50px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        /* ========== Header ========== */
+        .resume-header {
+            background: linear-gradient(135deg, #1a3c5e 0%, #1f4d75 30%, #1a3c5e 60%, #163250 100%);
+            color: #ffffff;
+            padding: 36px 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-header::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+        }
+
+        .resume-header::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 30%;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .header-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .header-info .job-target {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.02em;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            align-items: center;
+        }
+
+        .header-contact .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .header-contact .contact-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* ========== Main Body ========== */
+        .resume-body {
+            padding: 32px 40px 36px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        .section-title .title-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            min-width: 20px;
+            margin-left: 4px;
+        }
+
+        /* ========== 技能标签 ========== */
+        .skill-group {
+            margin-bottom: 12px;
+        }
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-group-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-medium);
+            margin-bottom: 8px;
+            letter-spacing: 0.01em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--tag-text);
+            background: var(--bg-tag);
+            border: 1px solid var(--tag-border);
+            border-radius: 20px;
+            letter-spacing: 0.01em;
+            transition: var(--transition);
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .skill-tag:hover {
+            background: #dbeaf7;
+            border-color: #a3c5e6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ========== 工作经历 & 项目经验 ========== */
+        .experience-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            border-left: 2px solid var(--border);
+            padding-bottom: 4px;
+            transition: var(--transition);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--accent);
+            transition: var(--transition);
+        }
+
+        .experience-item:hover::before {
+            background: #1a6daa;
+            box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.35);
+        }
+
+        .experience-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .experience-header .company {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .experience-header .role {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-left: 6px;
+        }
+
+        .experience-header .date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        .experience-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .experience-details li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .experience-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-size: 0.7rem;
+            line-height: 1.6;
+        }
+
+        .experience-details li .highlight {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* ========== 自我评价 ========== */
+        .self-eval {
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .self-eval p {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.65;
+        }
+
+        .self-eval p:last-child {
+            margin-bottom: 0;
+        }
+
+        .self-eval p::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.7;
+        }
+
+        /* ========== 教育背景 ========== */
+        .education-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            padding: 10px 0;
+        }
+        .education-block .school {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .education-block .major {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+        .education-block .edu-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        /* ========== 占位符提示 ========== */
+        .placeholder-hint {
+            display: inline-block;
+            background: #fffbe6;
+            border: 1px dashed #e6c940;
+            color: #8a6d14;
+            font-size: 0.75rem;
+            padding: 1px 7px;
+            border-radius: 3px;
+            cursor: help;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* ========== 响应式设计 ========== */
+        @media (max-width: 768px) {
+            .resume-header {
+                padding: 24px 20px 20px;
+            }
+            .resume-body {
+                padding: 20px 18px 24px;
+            }
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .header-info h1 {
+                font-size: 1.5rem;
+            }
+            .header-contact {
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+            .header-contact .contact-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 0.7rem;
+            }
+            .experience-header {
+                flex-direction: column;
+                gap: 2px;
+            }
+            .experience-item {
+                padding-left: 14px;
+            }
+            .experience-item::before {
+                left: -5px;
+                width: 8px;
+                height: 8px;
+            }
+            .section-title {
+                font-size: 1rem;
+            }
+            .skill-tag {
+                padding: 4px 10px;
+                font-size: 0.78rem;
+            }
+            .self-eval {
+                padding: 14px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px 4px 30px;
+            }
+            .resume-container {
+                border-radius: 8px;
+            }
+            .resume-header {
+                padding: 18px 14px 16px;
+            }
+            .resume-body {
+                padding: 16px 12px 20px;
+            }
+            .header-info h1 {
+                font-size: 1.3rem;
+            }
+            .header-info .job-target {
+                font-size: 0.8rem;
+                padding: 3px 10px;
+            }
+            .skill-tags {
+                gap: 5px;
+            }
+            .skill-tag {
+                padding: 3px 8px;
+                font-size: 0.72rem;
+                border-radius: 14px;
+            }
+            .experience-details li {
+                font-size: 0.82rem;
+            }
+            .self-eval p {
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ========== 打印样式 ========== */
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+                margin: 0;
+            }
+            .resume-container {
+                max-width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+            }
+            .resume-header {
+                background: #1a3c5e !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 22px 28px 18px;
+            }
+            .resume-body {
+                padding: 20px 28px 24px;
+            }
+            .section-title .title-icon {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .skill-tag {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border: 1px solid #c0d4e6;
+            }
+            .experience-item::before {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .self-eval {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border: 1px solid #ddd;
+            }
+            .experience-item {
+                border-left-color: #ccc;
+            }
+            @page {
+                margin: 12mm 14mm;
+                size: A4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+
+        <!-- ==================== Header ==================== -->
+        <header class="resume-header">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1>个人简历</h1>
+                    <span class="job-target">求职意向：初级运维工程师 / 系统运维工程师</span>
+                </div>
+                <div class="header-contact">
+                    <span class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>138-xxxx-xxxx <sup class="placeholder-hint">替换</sup></span>
+                    </span>
+                    <span class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span>example@email.com <sup class="placeholder-hint">替换</sup></span>
+                    </span>
+                    <span class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>广州</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ==================== Body ==================== -->
+        <main class="resume-body">
+
+            <!-- 专业技能 -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="title-icon">⚙</span>专业技能
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-title">🖥 系统与基础服务</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux 基础命令</span>
+                        <span class="skill-tag">RAID 磁盘阵列</span>
+                        <span class="skill-tag">NFS</span>
+                        <span class="skill-tag">MinIO</span>
+                        <span class="skill-tag">用户权限管理</span>
+                        <span class="skill-tag">文件系统管理</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-title">🗄 数据库与中间件</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Kafka</span>
+                        <span class="skill-tag">RabbitMQ</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-title">🔧 版本管理与 CI/CD</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitLab</span>
+                        <span class="skill-tag">Shell 脚本</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">CI/CD 流水线</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-title">📦 容器与编排</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Docker Compose</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">kubeadm 集群搭建</span>
+                        <span class="skill-tag">Pod/Deployment/Service</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-title">🌐 IT 基础设施</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">桌面终端维护</span>
+                        <span class="skill-tag">打印机/投影设备</span>
+                        <span class="skill-tag">局域网维护</span>
+                        <span class="skill-tag">路由器/交换机基础配置</span>
+                        <span class="skill-tag">VLAN 划分</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 工作经历 -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="title-icon">💼</span>工作经历
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span>
+                            <span class="company">广州都拓信息科技有限公司</span>
+                            <span class="role">驻场运维工程师</span>
+                        </span>
+                        <span class="date">2024.11 – 至今（1.5年）</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li>
+                            <span class="highlight">桌面与设备运维：</span>负责甲方公司内部 <span class="highlight">100+ 台</span>办公电脑、打印机及投影设备的日常巡检与故障修复，通过标准化巡检清单将设备月均故障率降低 <span class="highlight">20%</span>。
+                        </li>
+                        <li>
+                            <span class="highlight">网络维护：</span>独立处理局域网络连通性问题，完成 IP 分配、VLAN 划分、路由器/交换机基础配置与故障设备更换，保障办公网络稳定运行。
+                        </li>
+                        <li>
+                            <span class="highlight">机房补位与协助：</span>协助服务器管理员完成 Linux 服务器的日常巡检、补丁更新及简单服务重启等操作，初步接触并维护 NFS 共享存储环境。
+                        </li>
+                        <li>
+                            <span class="highlight">主动学习与实践：</span>在岗期间利用业余时间自学 Docker、Kubernetes、Jenkins 等主流运维技术，并在个人实验环境中反复练习，具备由传统硬件维护向平台化运维转型的实操基础。
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 项目/实验经验 -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="title-icon">🚀</span>项目 / 实验经验
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span>
+                            <span class="company">个人实验项目</span>
+                            <span class="role">基于 Kubernetes 的微服务部署与 CI/CD 流水线</span>
+                        </span>
+                        <span class="date">2025.06 – 2025.08</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li>
+                            <span class="highlight">环境搭建：</span>使用 VMware 虚拟出 3 台 CentOS 7 节点，通过 <span class="highlight">kubeadm</span> 搭建 Kubernetes 集群，配置 Calico 网络插件。
+                        </li>
+                        <li>
+                            <span class="highlight">组件部署：</span>在集群内以 Deployment 方式部署 <span class="highlight">GitLab、Jenkins、RabbitMQ 及 Redis</span>，并配置 NFS 为持久化存储。
+                        </li>
+                        <li>
+                            <span class="highlight">流水线实现：</span>编写 Jenkins Pipeline 脚本，实现代码从 GitLab 拉取 → Maven 构建 → Docker 镜像打包并推送到 MinIO 镜像仓库 → 自动更新 K8s 集群应用的完整 <span class="highlight">CI/CD 流程</span>。
+                        </li>
+                        <li>
+                            <span class="highlight">项目成果：</span>掌握容器编排、持续集成基础、中间件部署及脚本编写，能够独立排查 <span class="highlight">Pod 启动失败、服务发现异常</span>等常见问题。
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 教育背景 -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="title-icon">🎓</span>教育背景
+                </div>
+                <div class="education-block">
+                    <span>
+                        <span class="school">广州XX大学
+                            <sup class="placeholder-hint">请替换为真实院校</sup>
+                        </span>
+                        <span class="major"> | 计算机科学与技术（或计算机网络技术）</span>
+                    </span>
+                    <span class="edu-date">20XX.09 – 20XX.06
+                        <sup class="placeholder-hint">替换</sup>
+                    </span>
+                </div>
+            </section>
+
+            <!-- 自我评价 -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="title-icon">📝</span>自我评价
+                </div>
+                <div class="self-eval">
+                    <p>
+                        <strong>1.5年驻场运维经验</strong>，养成严谨的巡检习惯与高效的用户支持能力，能快速响应并解决各种桌面与网络突发问题。
+                    </p>
+                    <p>
+                        对 <strong>Linux 与自动化运维</strong>有浓厚兴趣，已在业余时间系统学习并搭建整套实验环境，具备初级运维工程师所要求的技能树。
+                    </p>
+                    <p>
+                        <strong>动手与自学能力突出</strong>，从零搭建过包含 K8s、Jenkins、GitLab 在内的完整 DevOps 实验环境，具备基本的排错思维和工程实践意识。
+                    </p>
+                    <p>
+                        工作细致认真，吃苦耐劳，期望在新的岗位上深入钻研运维技术，成长为一名<strong>专业可靠的系统运维工程师</strong>。
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>
